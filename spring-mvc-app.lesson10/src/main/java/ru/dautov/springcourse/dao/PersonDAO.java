@@ -20,12 +20,12 @@ public class PersonDAO {
         people.add(new Person(++PEOPLE_COUNT, "Katy"));
     }
 
-//    вывод всех людей на экран
+    //    вывод всех людей на экран
     public List<Person> index() {
         return people;
     }
 
-//    показывает одного человека по id
+    //    показывает одного человека по id
     public Person show(int id) {
         return people.stream().filter(person -> person.getId() == id).findAny().orElse(null);
     }
@@ -33,5 +33,15 @@ public class PersonDAO {
     public void save(Person person) {
         person.setId(++PEOPLE_COUNT);
         people.add(person);
+    }
+
+    public void update(int id, Person updatedPerson) {
+        Person personToBeUpdated = show(id);
+
+        personToBeUpdated.setName(updatedPerson.getName());
+    }
+
+    public void delete(int id) {
+        people.removeIf(p -> p.getId() == id);
     }
 }
