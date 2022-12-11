@@ -6,7 +6,8 @@
 </head>
 <body>
 
-<p th:text="${person.getName()}">VALUE</p>
+<p th:text="${person.getName() + ', ' + person.getAge()}">VALUE</p>
+<p th:text="${person.getEmail()}">VALUE</p>
 <p th:text="${person.getId()}">VALUE</p>
 
 <br/>
@@ -18,7 +19,7 @@
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
     <input type="submit" value="Delete">
 </form>
-<br/>
+
 
 <a href="/people">All peoples</a>
 
